@@ -52,21 +52,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A very basic data cleaning")
   
     parser.add_argument(
-        "sample.csv",
+        "--input_artifact",
         type = str,
-        help = "Raw data",
+        help = "Path to the raw data",
         required = True
     )
 
     parser.add_argument(
-        "clean_sample.csv",
+        "--output_artifact",
         type = str,
-        help = "Data after being cleaned",
+        help = "Path to data after being cleaned",
         required = True
     )
 
     parser.add_argument(
-        "dataset",
+        "--output_type",
         type = str,
         help = "Cleaned dataset of rental prices after preprocessing.",
         required = True
@@ -74,8 +74,8 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "--output_description", 
-        type = ## INSERT TYPE HERE: str, float or int,
-        help = ## INSERT DESCRIPTION HERE,
+        type = str,
+        help = "Description of the cleaned dataset.",
         required = True
     )
 
