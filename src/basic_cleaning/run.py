@@ -54,7 +54,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--input_artifact",
         type = str,
-        help = "Path to the raw data",
+        help = "Path to the raw data.",
         required = True
     )
 
