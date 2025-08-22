@@ -40,7 +40,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
                 "main",
-                version='main',
+                #version='main',
                 env_manager="conda",
                 parameters={
                     "sample": config["etl"]["sample"],
@@ -56,7 +56,7 @@ def go(config: DictConfig):
             _= mlflow.run(
                 f"{config['main']['components_repository']}/basic_cleaning",
                 "main",
-                version='main',
+                #version='main',
                 env_manager="conda",
                 parameters={
                     "input_artifact": "sample.csv:latest",
@@ -75,7 +75,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/data_check",
                 "main",
-                version="main",
+                #version="main",
                 env_manager="conda",
                 parameters={
                     "csv": "clean_sample.csv:latest",
@@ -93,7 +93,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/train_val_test_split",
                 "main",
-                version="main",
+                #version="main",
                 env_manager="conda",
                 parameters={
                     "input": "clean_sample.csv:latest",
@@ -121,7 +121,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/train_random_forest",
                 "main",
-                version="main",
+                #version="main",
                 env_manager="conda",
                 parameters={
                     "train_data": "trainval_data.csv:latest",
@@ -145,7 +145,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/test_regression_model",
                 "main",
-                version="main",
+                #version="main",
                 env_manager="conda",
                 parameters={
                     "model_export":"model_export:prod",
