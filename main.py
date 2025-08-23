@@ -40,7 +40,7 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
                 "main",
-                version='main',
+                version="main",
                 env_manager="conda",
                 parameters={
                     "sample": config["etl"]["sample"],
@@ -56,7 +56,7 @@ def go(config: DictConfig):
             _= mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(), "src", "basic_cleaning"),
                 "main",
-                version='main',
+                #"main",
                 env_manager="conda",
                 parameters={
                     "input_artifact": "sample.csv:latest",
@@ -77,14 +77,14 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(), "src", "data_check"),
                 "main",
-                version="main",
+                #version="main",
                 env_manager="conda",
                 parameters={
                     "csv": "clean_sample.csv:latest",
                     "ref": "clean_sample.csv:reference",
                     "kl_threshold": config["data_check"]["kl_threshold"],
-                    "min_price": config["data_check"]["min_price"],
-                    "max_price": config["data_check"]["max_price"]
+                    "min_price": config["etl"]["min_price"],
+                    "max_price": config["etl"]["max_price"]
                 },
             )
             ##################
