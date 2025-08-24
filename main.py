@@ -282,12 +282,13 @@ def go(config: DictConfig):
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(), "src", "train_random_forest"),
                 "main",
-                version="main",
+               "main",
                 env_manager="conda",
                 parameters={
-                    "train_data": "trainval_data.csv:latest",
+                    "trainval_artifact": "trainval_data.csv:latest",
+                    "output_artifact": "random_forest_export",  #config["modeling"]["export_artifact"],
+
                     "rf_config": rf_config,
-                    "export_artifact":config["modeling"]["export_artifact"],
                     "random_seed": config["modeling"]["random_seed"],
                     "val_size": config["modeling"]["val_size"],
                     "stratify_by": config["modeling"]["stratify_by"],
