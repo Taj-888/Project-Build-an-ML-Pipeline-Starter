@@ -258,9 +258,9 @@ def go(config: DictConfig):
                 env_manager="conda",
                 parameters={
                     "input": "clean_sample.csv:latest",
-                    "test_size": config["data_split"]["test_size"],
-                    "random_seed": config["data_split"]["random_seed"],
-                    "stratify": config["data_split"]["stratify_by"],
+                    "test_size": config["modeling"]["test_size"],
+                    "random_seed": config["modeling"]["random_seed"],
+                    "stratify": config["modeling"]["stratify_by"],
                 },
             )
 
